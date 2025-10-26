@@ -27,11 +27,14 @@ GUIDES = [
         "content": """
         ### 3D Printer Setup
         1. Level the bed using the calibration knobs.
+        [IMAGE:0]
         2. Load filament by heating the nozzle and inserting material.
+        [IMAGE:1]
         3. Run a small cube test print before starting.
         """,
         "images": [
-            "https://cdn1.bambulab.com/x1/x1Series-main-bg-v1.png"
+            "https://cdn1.bambulab.com/x1/x1Series-main-bg-v1.png",
+            "https://cdn11.bigcommerce.com/s-n7dyokm269/images/stencil/1280x1280/products/378/1859/SafetyFirst__88603.1554394304.gif?c=2"
         ]
     },
     {

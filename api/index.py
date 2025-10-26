@@ -10,7 +10,6 @@ GUIDES = [
         "title": "Safety Basics",
         "summary": "Quick rules for tool use and lab behavior.",
         "content": """
-        ### Safety Basics
         - Always wear protective gear.
         - Check your workspace before starting.
         - Turn off tools before adjusting or cleaning.
@@ -25,7 +24,6 @@ GUIDES = [
         "title": "3D Printer Setup",
         "summary": "Bed leveling, filament loading, test print.",
         "content": """
-        ### 3D Printer Setup
         1. Level the bed using the calibration knobs.
         [IMAGE:0]
         2. Load filament by heating the nozzle and inserting material.
@@ -42,7 +40,6 @@ GUIDES = [
         "title": "Soldering 101",
         "summary": "Tin, join, clean. Do and don’ts.",
         "content": """
-        ### Soldering 101
         - Always use a fume extractor.
         - Tin your tip before use.
         - Clean the joint after soldering.

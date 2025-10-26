@@ -16,8 +16,8 @@ GUIDES = [
         - Turn off tools before adjusting or cleaning.
         """,
         "images": [
-            "https://example.com/images/safety_gear.jpg",
-            "https://example.com/images/tool_rules.jpg"
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxaI9QkVCaPLwcmmm21-GyUzJSLxycu00K0A&s",
+            "https://cdn11.bigcommerce.com/s-n7dyokm269/images/stencil/1280x1280/products/378/1859/SafetyFirst__88603.1554394304.gif?c=2"
         ]
     },
     {
@@ -31,7 +31,7 @@ GUIDES = [
         3. Run a small cube test print before starting.
         """,
         "images": [
-            "https://example.com/images/printer_setup.jpg"
+            "https://cdn1.bambulab.com/x1/x1Series-main-bg-v1.png"
         ]
     },
     {
@@ -45,7 +45,7 @@ GUIDES = [
         - Clean the joint after soldering.
         """,
         "images": [
-            "https://example.com/images/soldering_tips.jpg"
+            "https://www.ifixit.com/_next/image?url=https%3A%2F%2Fifixit-strapi-uploads.s3.us-east-1.amazonaws.com%2FCollection_Page_Headers_Soldering_d886934323.jpg&w=3840&q=75"
         ]
     },
     {

@@ -5,20 +5,6 @@ app = Flask(__name__)
 
 GUIDES = [
     {
-        "id": 101,
-        "title": "Safety Basics",
-        "summary": "Quick rules for tool use and sadna behavior.",
-        "content": """
-        - Always wear protective gear.
-        - Check your workspace before starting.
-        - Turn off tools before adjusting or cleaning.
-        """,
-        "images": [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxaI9QkVCaPLwcmmm21-GyUzJSLxycu00K0A&s",
-            "https://cdn11.bigcommerce.com/s-n7dyokm269/images/stencil/1280x1280/products/378/1859/SafetyFirst__88603.1554394304.gif?c=2"
-        ]
-    },
-    {
         "id": 2,
         "title": "3D Printer Setup",
         "summary": "Bed leveling, filament loading, test print.",
@@ -35,62 +21,42 @@ GUIDES = [
         ]
     },
     {
-        "id": 3,
-        "title": "Soldering 101",
-        "summary": "Tin, join, clean. Do and don’ts.",
-        "content": """
-        - Always use a fume extractor.
-        - Tin your tip before use.
-        - Clean the joint after soldering.
-        """,
-        "images": [
-            "https://www.ifixit.com/_next/image?url=https%3A%2F%2Fifixit-strapi-uploads.s3.us-east-1.amazonaws.com%2FCollection_Page_Headers_Soldering_d886934323.jpg&w=3840&q=75"
-        ]
-    },
-    {
-        "id": 4,
-        "title": "Inventory QR Tips",
-        "summary": "Labeling and scanning best practices.",
-        "content": """
-        ### Inventory QR Tips
-        - Use high-contrast labels.
-        - Keep them in visible spots.
-        - Test scanning range before deploying.
-        """,
-        "images": [
-            "https://example.com/images/qr_labels.jpg"
-        ]
-    },
-    {
-        "id": 5,
-        "title": "Workshop Rules - נהלי עבודה תשע\"ח",
+        "id": 101,
+        "title": "Workshop Rules",
         "summary": "General conduct and safety rules for workshop classes (מרכז תה\"ל).",
         "content": """
-        ### דרישות כלליות
-        1. כל אדם (תלמיד, מורה, תומך הוראה וכו') חייב לקרוא ולהכיר את נהלי העבודה.
-        2. חובה לעבוד רק תחת פיקוח מדריך או מורה מוסמך.
-        3. יש להגיע בלבוש מתאים (בגדים סגורים, נעליים סגורות).
-        4. חל איסור על כניסה לסדנה ללא אישור מדריך.
-        5. יש לשמור על התנהגות נאותה וכבוד הדדי.
-        6. אין לעבוד כאשר האדם עייף, חולה או במצב שעלול לפגוע בבטיחותו.
-        7. אין להפעיל מכונה ללא הדרכה מוקדמת מהמורה.
-        8. יש לדווח מיד על כל תאונה או תקלה למדריך.
-        9. חובה להרכיב משקפי מגן בכל עבודה עם כלי חיתוך, ניסור או קידוח.
-        10. אין להשאיר כלים או ציוד במקומות שאינם ייעודיים לכך.
-        11. חובה לשמור על סדר וניקיון במקום העבודה.
-        12. בתום העבודה יש לוודא כיבוי כל המכשירים החשמליים.
-        13. חל איסור על שימוש במכשירים חשמליים שאינם מאושרים.
-        14. אין להעביר כלים בין תלמידים בזמן עבודה.
-        15. יש לשמור על כללים של שימוש נכון בכלי עבודה.
-        16. כל תלמיד אחראי לציוד האישי שסופק לו.
-        17. יציאה מהסדנה רק באישור המורה.
-        18. תחום העבודה בסדנה מחייב אחריות וזהירות.
-
-        ### הוראות לסגירת הסדנה
-        1. לוודא שכל המכשירים כבויים.
-        2. לוודא שכל החומרים חוזרים למקומם.
-        3. להחזיר ציוד למקום האחסון.
-        4. לדווח למורה על חוסרים או נזקים.
+1. Every person (student, teacher, teaching assistant, etc.) must read and be familiar with the work procedures.
+2. Work is permitted only under the supervision of an instructor or certified teacher.
+3. Appropriate clothing must be worn (closed clothing, closed shoes).
+4. Entry into the workshop without the instructor’s permission is strictly prohibited.
+5. Proper behavior and mutual respect must be maintained.
+6. Do not work when tired, ill, or in any condition that could compromise safety.
+7. Do not operate any machine without prior instruction from the teacher.
+8. Any accident or malfunction must be reported immediately to the instructor.
+9. Safety goggles must be worn when working with cutting, sawing, or drilling tools.
+10. Tools and equipment must not be left in non-designated areas.
+11. The workspace must be kept clean and orderly at all times.
+12. At the end of the work session, make sure all electrical devices are turned off.
+13. The use of unauthorized electrical devices is strictly forbidden.
+14. Do not pass tools between students while working.
+15. Follow all rules for proper use of tools.
+16. Each student is responsible for the personal equipment assigned to them.
+17. Leaving the workshop is allowed only with the teacher’s permission.
+18. Working in the workshop requires responsibility and caution.
+        """,
+        "images": [
+            "https://example.com/images/workshop_rules.jpg"
+        ]
+    },
+    {
+        "id": 1000,
+        "title": "Workshop closure",
+        "summary": "General conduct and safety rules for workshop classes (מרכז תה\"ל).",
+        "content": """
+1. Make sure all devices are turned off.
+2. Make sure all materials are returned to their place.
+3. Return the equipment to the storage area.
+4. Report any shortages or damages to the teacher.
         """,
         "images": [
             "https://example.com/images/workshop_rules.jpg"

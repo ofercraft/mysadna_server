@@ -8,7 +8,7 @@ GUIDES = [
     {
         "id": 101,
         "title": "Safety Basics",
-        "summary": "Quick rules for tool use and lab behavior.",
+        "summary": "Quick rules for tool use and sadna behavior.",
         "content": """
         - Always wear protective gear.
         - Check your workspace before starting.

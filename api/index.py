@@ -20,9 +20,9 @@ def load_guides():
         },
         {
             "id": 2,
-            "title": "Closing the Workshop",
-            "description": "How to properly close and secure the workshop after class.",
-            "video_url": "https://stream.mux.com/AYbTt02P002b82WHDxE4Wm4UoKxB5GnSnfC4KqE3fWopc.m3u8"
+            "title": "לילה לבן",
+            "description": "הזמנה ללילה הלבן של המחוננים",
+            "video_url": "https://stream.mux.com/7FQ1LRH7YtN3P6RiqabYYj1BnYuMF02iODnIACWlw00L4"
         },
     ]
 

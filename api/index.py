@@ -24,6 +24,12 @@ def load_guides():
             "description": "הזמנה ללילה הלבן של המחוננים",
             "video_url": "https://stream.mux.com/Xi6h6CrEc029kqP201bwoIqABHF29SzlllDfDbUoP02CUw"
         },
+        {
+            "id": 3,
+            "title": "לירן ועודד האהובים",
+            "description": "סרטון של לירן ועודד",
+            "video_url": "https://stream.mux.com/bPbD4ACWzCPownH9P7RfTtpYryB1yNhtTb01BIqysWkE"
+        },
     ]
 
 GUIDES = load_guides()

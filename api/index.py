@@ -13,7 +13,7 @@ GUIDES = [
         "content": [
             {"type": "title", "value": "Introduction"},
             {"type": "text", "value": "The jigsaw is a versatile power tool for making curved and straight cuts in wood, metal, or plastic."},
-            {"type": "image", "url": "https://cdn.example.com/images/jigsaw-tool.jpg"},
+            {"type": "image", "url": "https://makeitsafe.b-cdn.net/maxresdefault.jpg"},
             {"type": "video", "url": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8"},
             {"type": "text", "value": "Always wear goggles and keep your hands away from the cutting path."},
             {"type": "title", "value": "Tips"},

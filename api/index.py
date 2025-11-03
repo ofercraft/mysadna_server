@@ -1,55 +1,75 @@
 from flask import Flask, jsonify, request
-import json
-import os
 
 app = Flask(__name__)
 
-GUIDES_FILE = "guides.json"
-
-# --- Load guides from file or default data ---
-def load_guides():
-    if os.path.exists(GUIDES_FILE):
-        with open(GUIDES_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return [
-        {
-            "id": 1,
-            "title": "Workshop Safety Overview",
-            "description": "Essential safety instructions for using the workshop safely.",
-            "video_url": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8"
-        },
-        {
-            "id": 2,
-            "title": "לילה לבן",
-            "description": "הזמנה ללילה הלבן של המחוננים",
-            "video_url": "https://vz-48b0307b-989.b-cdn.net/3653ae58-a323-47e8-86b4-f2929352f13b/playlist.m3u8"
-        },
-        {
-            "id": 3,
-            "title": "לירן ועודד האהובים",
-            "description": "סרטון של לירן ועודד",
-            "video_url": "https://stream.mux.com/bPbD4ACWzCPownH9P7RfTtpYryB1yNhtTb01BIqysWkE"
-        },
-    ]
-
-GUIDES = load_guides()
-
-# --- Utility ---
-def save_guides():
-    with open(GUIDES_FILE, "w", encoding="utf-8") as f:
-        json.dump(GUIDES, f, ensure_ascii=False, indent=2)
+# --- Dummy data ---
+GUIDES = [
+    {
+        "id": 1,
+        "title": "Jigsaw Basics",
+        "description": "Learn how to safely and effectively use a jigsaw for woodworking.",
+        "banner_image": "https://cdn.example.com/banners/jigsaw-banner.jpg",
+        "tags": ["woodworking", "tools", "safety"],
+        "content": [
+            {"type": "title", "value": "Introduction"},
+            {"type": "text", "value": "The jigsaw is a versatile power tool for making curved and straight cuts in wood, metal, or plastic."},
+            {"type": "image", "url": "https://cdn.example.com/images/jigsaw-tool.jpg"},
+            {"type": "video", "url": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8"},
+            {"type": "text", "value": "Always wear goggles and keep your hands away from the cutting path."},
+            {"type": "title", "value": "Tips"},
+            {"type": "text", "value": "Use the right blade for the material. Clamp your workpiece firmly before cutting."}
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Laser Cutter Setup",
+        "description": "Step-by-step instructions for setting up and calibrating a laser cutter.",
+        "banner_image": "https://cdn.example.com/banners/laser-setup.jpg",
+        "tags": ["laser", "cutting", "setup"],
+        "content": [
+            {"type": "title", "value": "Overview"},
+            {"type": "text", "value": "Before powering on the laser cutter, ensure the ventilation system is active."},
+            {"type": "image", "url": "https://cdn.example.com/images/laser-cutter.jpg"},
+            {"type": "video", "url": "https://stream.mux.com/abc123examplevideo.m3u8"},
+            {"type": "text", "value": "Focus the laser lens using the calibration tool provided by the manufacturer."}
+        ]
+    },
+    {
+        "id": 3,
+        "title": "3D Printing for Beginners",
+        "description": "Your first steps into the world of additive manufacturing.",
+        "banner_image": "https://cdn.example.com/banners/3dprinting.jpg",
+        "tags": ["3d-printing", "maker"],
+        "content": [
+            {"type": "title", "value": "Welcome"},
+            {"type": "text", "value": "3D printing turns digital models into physical objects layer by layer."},
+            {"type": "image", "url": "https://cdn.example.com/images/3dprinter.jpg"},
+            {"type": "video", "url": "https://stream.mux.com/example3dprint.m3u8"},
+            {"type": "text", "value": "PLA is a great beginner filament—easy to print, minimal warping, and biodegradable."}
+        ]
+    }
+]
 
 # --- Endpoints ---
 
 @app.route("/api/guides", methods=["GET"])
 def get_guides():
-    """Return list of all guides with id, title, and description."""
-    result = [{"id": g["id"], "title": g["title"], "description": g["description"]} for g in GUIDES]
+    """Return list of all guides (summary info)."""
+    result = [
+        {
+            "id": g["id"],
+            "title": g["title"],
+            "description": g["description"],
+            "banner_image": g.get("banner_image"),
+            "tags": g.get("tags", [])
+        }
+        for g in GUIDES
+    ]
     return jsonify(result)
 
 @app.route("/api/guide/<int:guide_id>", methods=["GET"])
 def get_guide(guide_id):
-    """Return full guide data including video URL."""
+    """Return full guide including structured content."""
     guide = next((g for g in GUIDES if g["id"] == guide_id), None)
     if not guide:
         return jsonify({"error": "Guide not found"}), 404
@@ -57,10 +77,10 @@ def get_guide(guide_id):
 
 @app.route("/api/guides", methods=["POST"])
 def create_guide():
-    """Create a new guide with title, description, and video_url."""
+    """Create a new guide with title, description, banner_image, tags, and content."""
     data = request.get_json()
+    required_fields = ["title", "description", "banner_image", "content"]
 
-    required_fields = ["title", "description", "video_url"]
     if not data or not all(field in data for field in required_fields):
         return jsonify({"error": "Missing required fields"}), 400
 
@@ -68,12 +88,12 @@ def create_guide():
         "id": max((g["id"] for g in GUIDES), default=0) + 1,
         "title": data["title"],
         "description": data["description"],
-        "video_url": data["video_url"]
+        "banner_image": data["banner_image"],
+        "tags": data.get("tags", []),
+        "content": data["content"]
     }
 
     GUIDES.append(new_guide)
-    save_guides()
-
     return jsonify(new_guide), 201
 
 # --- Local testing ---

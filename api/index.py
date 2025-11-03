@@ -22,7 +22,7 @@ def load_guides():
             "id": 2,
             "title": "לילה לבן",
             "description": "הזמנה ללילה הלבן של המחוננים",
-            "video_url": "https://stream.mux.com/Xi6h6CrEc029kqP201bwoIqABHF29SzlllDfDbUoP02CUw"
+            "video_url": "https://iframe.mediadelivery.net/play/527786/3653ae58-a323-47e8-86b4-f2929352f13b"
         },
         {
             "id": 3,

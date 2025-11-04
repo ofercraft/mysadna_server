@@ -26,16 +26,19 @@ GEAR = [
             {"type": "title", "value": "הקדמה"},
             {"type": "text", "value": "מסור עגול הוא כלי חשמלי עוצמתי המשמש לחיתוך עץ, מתכת וחומרים נוספים."},
             {"type": "image", "url": "https://makeitsafe.b-cdn.net/maxresdefault.jpg"},
+            {"type": "warning", "value": "אין להסיר את מגן הלהב במהלך העבודה!"},
+            {"type": "step", "value": "ודא שהמסור כבוי ומנותק מהחשמל לפני החלפת להב."},
             {"type": "text", "value": "לפני כל שימוש, יש לוודא כי הלהב חד, תקין, ומורכב כראוי."},
             {"type": "title", "value": "אמצעי בטיחות"},
-            {"type": "text", "value": "יש להרכיב משקפי מגן, אוזניות, ולוודא שהאזור סביב נקי ממכשולים."}
+            {"type": "text", "value": "יש להרכיב משקפי מגן, אוזניות, ולוודא שהאזור סביב נקי ממכשולים."},
+            {"type": "video", "url": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8"}
         ]
     },
     {
         "id": 2,
         "title": "מקדחה - Electric Drill",
         "description": "שימוש נכון ובטוח במקדחה חשמלית.",
-        "banner_image": "https://cdn.example.com/banners/drill-banner.jpg",
+        "banner_image": "https://makeitsafe.b-cdn.net/electric_drill.jpg",
         "video": "https://stream.mux.com/exampledrillvideo.m3u8",
         "mankal": [
             "יש לוודא שהמקדחה מנותקת מהחשמל בזמן החלפת מקדח.",
@@ -47,9 +50,35 @@ GEAR = [
             {"type": "title", "value": "תיאור הכלי"},
             {"type": "text", "value": "המקדחה החשמלית משמשת לקידוח בחומרים שונים בהתאם לסוג המקדח."},
             {"type": "image", "url": "https://cdn.example.com/images/drill.jpg"},
+            {"type": "step", "value": "בחר מקדח מתאים לחומר העבודה."},
+            {"type": "warning", "value": "אין לקדוח בקרבת כבלי חשמל גלויים!"},
             {"type": "text", "value": "בעת העבודה, יש לשמור על יציבות הידיים ולמנוע החלקה."}
         ]
     }
+]
+
+# --- Possible tags ---
+POSSIBLE_TAGS = [
+    "safety", "protective-gear", "training", "inspection",
+    "woodworking", "metalworking", "cutting", "drilling", "welding",
+    "sanding", "machining", "electrical", "power-tools", "hand-tools",
+    "cleaning", "maintenance", "setup", "storage",
+    "wood", "metal", "plastic", "glass", "composite",
+    "lab", "workshop", "production", "training-room"
+]
+
+# --- Possible content types ---
+POSSIBLE_CONTENT_TYPES = [
+    # Basic structure
+    "title", "text", "image", "video",
+    # Instructional
+    "step", "tip", "note", "checklist",
+    # Safety / Warnings
+    "warning", "alert", "hazard",
+    # Interactive or reference
+    "pdf", "link", "download", "3d-model",
+    # Organization
+    "quote", "divider", "section", "list"
 ]
 
 # --- Endpoints ---
@@ -70,6 +99,7 @@ def get_gear():
     ]
     return jsonify(result)
 
+
 @app.route("/api/gear/<int:gear_id>", methods=["GET"])
 def get_gear_item(gear_id):
     """Return full gear item with all content and safety instructions."""
@@ -77,6 +107,7 @@ def get_gear_item(gear_id):
     if not gear:
         return jsonify({"error": "Gear item not found"}), 404
     return jsonify(gear)
+
 
 @app.route("/api/gear", methods=["POST"])
 def create_gear_item():
@@ -100,6 +131,19 @@ def create_gear_item():
 
     GEAR.append(new_gear)
     return jsonify(new_gear), 201
+
+
+@app.route("/api/tags", methods=["GET"])
+def get_tags():
+    """Return list of possible tags for gear classification."""
+    return jsonify(sorted(POSSIBLE_TAGS))
+
+
+@app.route("/api/content-types", methods=["GET"])
+def get_content_types():
+    """Return list of supported content block types."""
+    return jsonify(sorted(POSSIBLE_CONTENT_TYPES))
+
 
 # --- Local testing ---
 if __name__ == "__main__":

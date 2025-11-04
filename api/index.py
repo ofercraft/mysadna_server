@@ -39,7 +39,7 @@ GEAR = [
         "title": "מקדחה",
         "description": "שימוש נכון ובטוח במקדחה חשמלית.",
         "banner_image": "https://makeitsafe.b-cdn.net/electric_drill.jpg",
-        "video": "https://iframe.mediadelivery.net/play/527786/f0aa39ae-cede-4583-83a0-f8ed7a68c63e",
+        "video": "https://vz-48b0307b-989.b-cdn.net/f0aa39ae-cede-4583-83a0-f8ed7a68c63e/playlist.m3u8",
         "mankal": [
             "יש לוודא שהמקדחה מנותקת מהחשמל בזמן החלפת מקדח.",
             "אין להפעיל את המקדחה בסביבת נוזלים.",

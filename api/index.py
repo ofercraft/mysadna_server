@@ -6,7 +6,7 @@ app = Flask(__name__)
 GEAR = [
     {
         "id": 1,
-        "title": "מסור עגול - Circular Saw",
+        "title": "מסור עגול",
         "description": "הנחיות בטיחות לשימוש במסור עגול.",
         "banner_image": "https://makeitsafe.b-cdn.net/circular_saw.jpg",
         "video": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8",
@@ -36,10 +36,10 @@ GEAR = [
     },
     {
         "id": 2,
-        "title": "מקדחה - Electric Drill",
+        "title": "מקדחה",
         "description": "שימוש נכון ובטוח במקדחה חשמלית.",
         "banner_image": "https://makeitsafe.b-cdn.net/electric_drill.jpg",
-        "video": "https://stream.mux.com/exampledrillvideo.m3u8",
+        "video": "https://iframe.mediadelivery.net/play/527786/f0aa39ae-cede-4583-83a0-f8ed7a68c63e",
         "mankal": [
             "יש לוודא שהמקדחה מנותקת מהחשמל בזמן החלפת מקדח.",
             "אין להפעיל את המקדחה בסביבת נוזלים.",
@@ -49,7 +49,7 @@ GEAR = [
         "content": [
             {"type": "title", "value": "תיאור הכלי"},
             {"type": "text", "value": "המקדחה החשמלית משמשת לקידוח בחומרים שונים בהתאם לסוג המקדח."},
-            {"type": "image", "url": "https://cdn.example.com/images/drill.jpg"},
+            {"type": "image", "url": "https://makeitsafe.b-cdn.net/electric_drill_2.jpg"},
             {"type": "step", "value": "בחר מקדח מתאים לחומר העבודה."},
             {"type": "warning", "value": "אין לקדוח בקרבת כבלי חשמל גלויים!"},
             {"type": "text", "value": "בעת העבודה, יש לשמור על יציבות הידיים ולמנוע החלקה."}

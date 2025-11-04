@@ -3,98 +3,103 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 # --- Dummy data ---
-GUIDES = [
+GEAR = [
     {
         "id": 1,
-        "title": "Jigsaw Basics",
-        "description": "Learn how to safely and effectively use a jigsaw for woodworking.",
-        "banner_image": "https://cdn.example.com/banners/jigsaw-banner.jpg",
-        "tags": ["woodworking", "tools", "safety"],
+        "title": "מסור עגול - Circular Saw",
+        "description": "הנחיות בטיחות לשימוש במסור עגול.",
+        "banner_image": "https://cdn.example.com/banners/circular-saw-banner.jpg",
+        "video": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8",
+        "mankal": [
+            "יש להשתמש במשקפי מגן ובאוזניות לפני תחילת העבודה.",
+            "אין להשתמש במכשיר אם כבל ההזנה פגום.",
+            "יש לכוון את המכשיר הרחק מכבל ההזנה.",
+            "יש לוודא שהגלגלת לא בלויה וכי היא תקינה ומשומנת כראוי.",
+            "חובה להשתמש רק בלהבים תקינים וחדים.",
+            "יש לוודא כי מסלול החיתוך נקי ממכשולים מעל ומתחת לחומר המעובד.",
+            "במהלך העבודה יש להרחיק את הידיים ממסלול החיתוך ומהלהב בפרט, ולהחזיק את המכשיר ביציבות בעזרת שתי הידיים.",
+            "יש להצמיד את המכשיר לחומר הגלם רק לאחר שהמסור מופעל.",
+            "אין לבלום את תנועת הלהב לאחר שחרור מתג ההפעלה. יש להמתין לסיום התנועה."
+        ],
+        "tags": ["safety", "woodworking", "power-tools"],
         "content": [
-            {"type": "title", "value": "Introduction"},
-            {"type": "text", "value": "The jigsaw is a versatile power tool for making curved and straight cuts in wood, metal, or plastic."},
+            {"type": "title", "value": "הקדמה"},
+            {"type": "text", "value": "מסור עגול הוא כלי חשמלי עוצמתי המשמש לחיתוך עץ, מתכת וחומרים נוספים."},
             {"type": "image", "url": "https://makeitsafe.b-cdn.net/maxresdefault.jpg"},
-            {"type": "video", "url": "https://stream.mux.com/qZ01wojcO41oS01KCeDNaJxcM00MWxMmrj3IXnG02vkBTRk.m3u8"},
-            {"type": "text", "value": "Always wear goggles and keep your hands away from the cutting path."},
-            {"type": "title", "value": "Tips"},
-            {"type": "text", "value": "Use the right blade for the material. Clamp your workpiece firmly before cutting."}
+            {"type": "text", "value": "לפני כל שימוש, יש לוודא כי הלהב חד, תקין, ומורכב כראוי."},
+            {"type": "title", "value": "אמצעי בטיחות"},
+            {"type": "text", "value": "יש להרכיב משקפי מגן, אוזניות, ולוודא שהאזור סביב נקי ממכשולים."}
         ]
     },
     {
         "id": 2,
-        "title": "Laser Cutter Setup",
-        "description": "Step-by-step instructions for setting up and calibrating a laser cutter.",
-        "banner_image": "https://cdn.example.com/banners/laser-setup.jpg",
-        "tags": ["laser", "cutting", "setup"],
+        "title": "מקדחה - Electric Drill",
+        "description": "שימוש נכון ובטוח במקדחה חשמלית.",
+        "banner_image": "https://cdn.example.com/banners/drill-banner.jpg",
+        "video": "https://stream.mux.com/exampledrillvideo.m3u8",
+        "mankal": [
+            "יש לוודא שהמקדחה מנותקת מהחשמל בזמן החלפת מקדח.",
+            "אין להפעיל את המקדחה בסביבת נוזלים.",
+            "יש לאחוז את הכלי בשתי ידיים בעת הקידוח."
+        ],
+        "tags": ["safety", "drilling"],
         "content": [
-            {"type": "title", "value": "Overview"},
-            {"type": "text", "value": "Before powering on the laser cutter, ensure the ventilation system is active."},
-            {"type": "image", "url": "https://cdn.example.com/images/laser-cutter.jpg"},
-            {"type": "video", "url": "https://stream.mux.com/abc123examplevideo.m3u8"},
-            {"type": "text", "value": "Focus the laser lens using the calibration tool provided by the manufacturer."}
-        ]
-    },
-    {
-        "id": 3,
-        "title": "3D Printing for Beginners",
-        "description": "Your first steps into the world of additive manufacturing.",
-        "banner_image": "https://cdn.example.com/banners/3dprinting.jpg",
-        "tags": ["3d-printing", "maker"],
-        "content": [
-            {"type": "title", "value": "Welcome"},
-            {"type": "text", "value": "3D printing turns digital models into physical objects layer by layer."},
-            {"type": "image", "url": "https://cdn.example.com/images/3dprinter.jpg"},
-            {"type": "video", "url": "https://stream.mux.com/example3dprint.m3u8"},
-            {"type": "text", "value": "PLA is a great beginner filament—easy to print, minimal warping, and biodegradable."}
+            {"type": "title", "value": "תיאור הכלי"},
+            {"type": "text", "value": "המקדחה החשמלית משמשת לקידוח בחומרים שונים בהתאם לסוג המקדח."},
+            {"type": "image", "url": "https://cdn.example.com/images/drill.jpg"},
+            {"type": "text", "value": "בעת העבודה, יש לשמור על יציבות הידיים ולמנוע החלקה."}
         ]
     }
 ]
 
 # --- Endpoints ---
 
-@app.route("/api/guides", methods=["GET"])
-def get_guides():
-    """Return list of all guides (summary info)."""
+@app.route("/api/gear", methods=["GET"])
+def get_gear():
+    """Return list of all gear items (summary info)."""
     result = [
         {
             "id": g["id"],
             "title": g["title"],
             "description": g["description"],
             "banner_image": g.get("banner_image"),
+            "video": g.get("video"),
             "tags": g.get("tags", [])
         }
-        for g in GUIDES
+        for g in GEAR
     ]
     return jsonify(result)
 
-@app.route("/api/guide/<int:guide_id>", methods=["GET"])
-def get_guide(guide_id):
-    """Return full guide including structured content."""
-    guide = next((g for g in GUIDES if g["id"] == guide_id), None)
-    if not guide:
-        return jsonify({"error": "Guide not found"}), 404
-    return jsonify(guide)
+@app.route("/api/gear/<int:gear_id>", methods=["GET"])
+def get_gear_item(gear_id):
+    """Return full gear item with all content and safety instructions."""
+    gear = next((g for g in GEAR if g["id"] == gear_id), None)
+    if not gear:
+        return jsonify({"error": "Gear item not found"}), 404
+    return jsonify(gear)
 
-@app.route("/api/guides", methods=["POST"])
-def create_guide():
-    """Create a new guide with title, description, banner_image, tags, and content."""
+@app.route("/api/gear", methods=["POST"])
+def create_gear_item():
+    """Create a new gear item."""
     data = request.get_json()
     required_fields = ["title", "description", "banner_image", "content"]
 
     if not data or not all(field in data for field in required_fields):
         return jsonify({"error": "Missing required fields"}), 400
 
-    new_guide = {
-        "id": max((g["id"] for g in GUIDES), default=0) + 1,
+    new_gear = {
+        "id": max((g["id"] for g in GEAR), default=0) + 1,
         "title": data["title"],
         "description": data["description"],
         "banner_image": data["banner_image"],
+        "video": data.get("video"),
+        "mankal": data.get("mankal", []),
         "tags": data.get("tags", []),
         "content": data["content"]
     }
 
-    GUIDES.append(new_guide)
-    return jsonify(new_guide), 201
+    GEAR.append(new_gear)
+    return jsonify(new_gear), 201
 
 # --- Local testing ---
 if __name__ == "__main__":

@@ -1,0 +1,28 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": { "serviceId": "makeitsafe-api", "region": "me-west1" }
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/api/tools",
+        "destination": "https://makeitsafe-api-816973725485.me-west1.run.app/api/tools",
+        "type": 301
+      },
+      {
+        "source": "/api/tool/**",
+        "destination": "https://makeitsafe-api-816973725485.me-west1.run.app/:splat",
+        "type": 301
+      }
+    ]
+  }
+}

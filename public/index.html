@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>🛰 SAFE Gateway Terminal</title>
 
-    <!-- Firebase SDK (you can leave it as-is or rename later) -->
-    <script defer src="/__/firebase/12.5.0/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
-
       body {
         background: radial-gradient(circle at 50% 40%, #050508, #000);
         color: #00ffcc;
@@ -24,27 +19,23 @@
         height: 100vh;
         overflow: hidden;
       }
-
       h1 {
         font-size: 2.5rem;
         letter-spacing: 2px;
         text-shadow: 0 0 10px #00ffee, 0 0 20px #00ffee, 0 0 30px #00ffee;
         animation: pulse 2s infinite;
       }
-
       h2 {
         font-size: 1rem;
         color: #888;
         margin-bottom: 1rem;
       }
-
       p {
         max-width: 420px;
         text-align: center;
         color: #aaffee;
         margin: 1rem 0;
       }
-
       a {
         color: #111;
         background: #00ffee;
@@ -59,7 +50,6 @@
         color: white;
         box-shadow: 0 0 10px #ff0077;
       }
-
       #cursor {
         display: inline-block;
         width: 10px;
@@ -67,18 +57,15 @@
         margin-left: 3px;
         animation: blink 1s step-end infinite;
       }
-
       @keyframes blink {
         50% {
           background: transparent;
         }
       }
-
       @keyframes pulse {
         0%, 100% { text-shadow: 0 0 10px #00ffee; }
         50% { text-shadow: 0 0 20px #ff0077, 0 0 40px #00ffee; }
       }
-
       footer {
         position: absolute;
         bottom: 10px;
@@ -91,20 +78,16 @@
     <h2>🛰 SAFE Gateway Terminal</h2>
     <h1>System Online<span id="cursor"></span></h1>
     <p>
-      Secure Access Framework Environment (SAFE) initialized.
-      Gateway link stable.
-      Unauthorized curiosity is encouraged but logged.
+      Secure Access Framework Environment (SAFE) initialized.<br />
+      Gateway link stable. Unauthorized curiosity is encouraged but logged.
     </p>
-    <a href="https://firebase.google.com/docs/hosting" target="_blank">
-      Access Control Console
-    </a>
+    <a href="console.html">Access Control Console</a>
     <footer>Build v12.5.0 — monitoring quantum channels...</footer>
 
     <script>
-      // 🕹️ Konami Code Easter Egg (↑↑↓↓←→←→BA)
+      // 🕹️ Konami Code Easter Egg
       const code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
       let buffer = [];
-
       window.addEventListener("keydown", (e) => {
         buffer.push(e.keyCode);
         buffer = buffer.slice(-code.length);

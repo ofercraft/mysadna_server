@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAFE Console</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+    body {
+      background: #000;
+      color: #00ffcc;
+      font-family: "Share Tech Mono", monospace;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    #terminal {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+    #input-line {
+      display: flex;
+      padding: 10px 20px;
+      background: #001010;
+      border-top: 1px solid #00ffcc33;
+    }
+    #prompt {
+      color: #00ffee;
+      margin-right: 10px;
+    }
+    #command {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #00ffcc;
+      flex: 1;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    .output {
+      color: #aaffee;
+      margin-bottom: 4px;
+    }
+    .error {
+      color: #ff0077;
+    }
+    .ascii {
+      color: #00ffee;
+      white-space: pre;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal">
+    SAFE GATEWAY v1.0
+    Type <span style="color:#ff0077;">help</span> for a list of available commands.
+  </div>
+  <div id="input-line">
+    <span id="prompt">safe@terminal:~$</span>
+    <input id="command" autofocus autocomplete="off" />
+  </div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const input = document.getElementById("command");
+    const history = [];
+    let histIndex = -1;
+
+    const commands = {
+      help: () =>
+        "Available commands:\n  help\n  clear\n  about\n  echo <text>\n  scan\n  exit",
+      clear: () => {
+        terminal.textContent = "";
+        return "";
+      },
+      about: () =>
+        "SAFE Gateway Terminal\nSecure Access Framework Environment\nCreated for testing human curiosity.",
+      echo: (args) => args.join(" "),
+      scan: () => "Scanning... [OK]\nQuantum channels stable.\nNo anomalies detected.",
+      exit: () => {
+        window.location.href = "index.html";
+        return "Exiting...";
+      },
+    };
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const text = input.value.trim();
+        history.push(text);
+        histIndex = history.length;
+        const [cmd, ...args] = text.split(" ");
+        const output =
+          commands[cmd] ?
+          commands[cmd](args) :
+          `'${cmd}' is not recognized as a valid SAFE command.`;
+        terminal.innerHTML += `\n<span class="output">$ safe@terminal:~$ ${text}</span>\n${output}`;
+        terminal.scrollTop = terminal.scrollHeight;
+        input.value = "";
+      } else if (e.key === "ArrowUp") {
+        if (histIndex > 0) input.value = history[--histIndex];
+      } else if (e.key === "ArrowDown") {
+        if (histIndex < history.length - 1) input.value = history[++histIndex];
+        else input.value = "";
+      }
+    });
+  </script>
+</body>
+</html>

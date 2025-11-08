@@ -1,87 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>🛰 SAFE Gateway Terminal</title>
 
-    <!-- update the version number as needed -->
+    <!-- Firebase SDK (you can leave it as-is or rename later) -->
     <script defer src="/__/firebase/12.5.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.5.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+      body {
+        background: radial-gradient(circle at 50% 40%, #050508, #000);
+        color: #00ffcc;
+        font-family: "Share Tech Mono", monospace;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px #00ffee, 0 0 20px #00ffee, 0 0 30px #00ffee;
+        animation: pulse 2s infinite;
+      }
+
+      h2 {
+        font-size: 1rem;
+        color: #888;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        max-width: 420px;
+        text-align: center;
+        color: #aaffee;
+        margin: 1rem 0;
+      }
+
+      a {
+        color: #111;
+        background: #00ffee;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.3s;
+      }
+      a:hover {
+        background: #ff0077;
+        color: white;
+        box-shadow: 0 0 10px #ff0077;
+      }
+
+      #cursor {
+        display: inline-block;
+        width: 10px;
+        background: #00ffcc;
+        margin-left: 3px;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          background: transparent;
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% { text-shadow: 0 0 10px #00ffee; }
+        50% { text-shadow: 0 0 20px #ff0077, 0 0 40px #00ffee; }
+      }
+
+      footer {
+        position: absolute;
+        bottom: 10px;
+        font-size: 0.75rem;
+        color: #444;
       }
     </style>
   </head>
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <h2>🛰 SAFE Gateway Terminal</h2>
+    <h1>System Online<span id="cursor"></span></h1>
+    <p>
+      Secure Access Framework Environment (SAFE) initialized.
+      Gateway link stable.
+      Unauthorized curiosity is encouraged but logged.
+    </p>
+    <a href="https://firebase.google.com/docs/hosting" target="_blank">
+      Access Control Console
+    </a>
+    <footer>Build v12.5.0 — monitoring quantum channels...</footer>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // 🕹️ Konami Code Easter Egg (↑↑↓↓←→←→BA)
+      const code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+      let buffer = [];
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+      window.addEventListener("keydown", (e) => {
+        buffer.push(e.keyCode);
+        buffer = buffer.slice(-code.length);
+        if (JSON.stringify(buffer) === JSON.stringify(code)) {
+          document.body.style.background =
+            "radial-gradient(circle at 50% 40%, #1a001a, #000)";
+          const h1 = document.querySelector("h1");
+          const p = document.querySelector("p");
+          h1.textContent = "🧬 Secure Channel Unlocked";
+          p.textContent =
+            "Welcome, operator. You've bypassed the gateway protocols. Proceed only if your code is clean.";
         }
       });
     </script>
